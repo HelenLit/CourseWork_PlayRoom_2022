@@ -1,10 +1,8 @@
 package PlayRoom;
 
-import Child.Child;
 import Child.AgeGroup;
-import DAO.AdmDAO;
+import Child.Child;
 import Toy.*;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,18 +16,17 @@ public class PlayRoom {
     private List<Child> childrenInRoom = new ArrayList<>(MAXCAPACITY);
     ToyList toyList;
     private String name;
-
     private Set<AgeGroup> ageGroups;
     private boolean isPlaying;
     private static PlayRoom playRoom;
     public PlayRoom addAgeGroup(AgeGroup... groups){
         check();
         if(ageGroups == null)
-            ageGroups = new HashSet<AgeGroup>();
+            ageGroups = new HashSet<>();
         ageGroups.addAll(Arrays.asList(groups));
         return this;
     }
-    private PlayRoom(Connection connection,int initialMoney,  AgeGroup... ageGroups) {
+    private PlayRoom(Connection connection, int initialMoney, AgeGroup... ageGroups) {
         addAgeGroup(ageGroups);
         this.toyList = new ToyList(initialMoney);
         this.connection = connection;
@@ -53,7 +50,39 @@ public class PlayRoom {
             return false;
         }
     }
-
+    protected List<Child> execChildListQuery(String query){
+        List<Child> childrenList = new ArrayList<>();
+        try(Statement st = connection.createStatement();){
+            ResultSet result = st.executeQuery(query);
+            while (result.next()) {
+                childrenList.add(Child.createChildObj(result));
+            }
+        }catch (SQLException e){
+            System.err.println(Arrays.toString(e.getStackTrace()));
+            System.exit(e.getErrorCode());
+        }
+        return childrenList;
+    }
+    public List<Child> ChildrenList() {
+        return execChildListQuery("""
+                USE [Course_Work_Play_Room]
+                SELECT *
+                FROM [Client].[Registered_Children]
+                """);
+    }
+    protected void execChildVoidQuery(String query){
+        try(Statement st = connection.createStatement();){
+            ResultSet result = st.executeQuery(query);
+        }catch (SQLException e){
+            System.err.println(Arrays.toString(e.getStackTrace()));
+            System.exit(e.getErrorCode());
+        }
+    }
+    public void FreeChildrenList() {
+       execChildVoidQuery("""
+                TRUNCATE TABLE [Client].[Registered_Children]
+                """);
+    }
     private void addChildren(){
         StringBuilder query = new StringBuilder("INSERT INTO [Client].[Registered_Children]" +
                 "([fname],[lname],[ageGroupID],[parent_contact]) VALUES");
@@ -66,41 +95,32 @@ public class PlayRoom {
             System.err.println(e.getSQLState());
         }
     }
-    //private outo
+    private int autoPrepRoom(){
+        List<AgeGroup> ageGroupList = new ArrayList<>();
+        for (Child ch: childrenInRoom) {
+            if(!ageGroupList.contains(ch.getAgeGroup()))
+                ageGroupList.add(ch.getAgeGroup());
+        }
+        ageGroups.addAll(ageGroupList);
+        return ageGroupList.size();
+    }
     public void startGroup() {
         isPlaying = true;
-        if(ageGroups == null)
-        try{
-            Statement st = connection.createStatement();
-            st.execute("""
-                        CREATE TABLE #ToysInRoom(
-                            [toy_ID] [int] PRIMARY KEY,
-                            [amount] [int] NULL,
-                            [total_price] [int] NULL,
-                        );
-                        """);
-        }catch (SQLException e){
-            System.err.println(e.getSQLState());
+        if(toyList.toyEntityMap.size()==0){
+            System.err.println("Перед вікриттям кімнати, має бути створений список іграшок");
+            return;
         }
+        toyList.createToyList();
         addChildren();
         toyList.approveList();
     }
-
     public void freeRoom(){
-        try{
-            Statement st = connection.createStatement();
-            st.execute("""
-                            TRUNCATE TABLE #ToysInRoom
-                            """);
-        }catch (SQLException e){
-            System.err.println(e.getSQLState());
-        }
+        toyList.trunkToyList();
         toyList.freeList();
+        FreeChildrenList();
         System.out.println("Кімнату звільнено.");
     }
-
     public ToyList getToyList() {
-
            return toyList;
     }
     private void check(){
@@ -114,36 +134,29 @@ public class PlayRoom {
     public String getName() {
         return name;
     }
-    public class ToyList {
-        private int initialMoney;
-        private Map<Integer, ToyEntityInfo> toyEntityMap;
+    public class ToyList extends AbstractToyList{
+        @Override
+        Connection getConnection() {
+            return connection;
+        }
+        @Override
+        boolean ifPlaying() {
+            return isPlaying;
+        }
+        public ToyList() {}
 
-        public ToyList() { }
         public ToyList(int initialMoney) {
-            setInitialMoney(initialMoney);
+            super(initialMoney);
         }
 
-        private int fromWhich(int money, List<Toy> toyList1){
-            int i = 0;
-            while(money<toyList1.get(i).getPrice() && i<(toyList1.size()-1))
-                i++;
-            return i;
-        }
-
-        public List<Toy> listFromMap(List<Toy> allToys) {
+        @SafeVarargs
+        @Override
+        public final Map<Integer, ToyEntityInfo> CreateToyMap(List<Toy>... ageGroupToys) {
             check();
-            List<Toy> result = new ArrayList<>();
-            toyEntityMap.entrySet().stream().forEach(e -> allToys.stream().forEach(
-                    t -> {
-                        if (t.getId() == e.getKey())
-                            for (int i =0;i< e.getValue().getAmount();i++) {
-                                result.add(t);
-                            }
-                    }));
-            return result;
-        }
-        public Map<Integer, ToyEntityInfo> CreateToyMap(List<Toy>... ageGroupToys){
-            check();
+            if(autoPrepRoom() == 0){
+                System.err.println("Перед вікриттям кімнати, має зареєструватись хоча б 1 дитина");
+                return null;
+            }
             toyEntityMap = new HashMap<>();
             List<List<Toy>> sublists = new ArrayList<>(ageGroups.size());
             for (AgeGroup ageGr: ageGroups) {
@@ -158,8 +171,8 @@ public class PlayRoom {
             int money = getInitialMoney();
             int added;
             Random rand = new Random();
-           do{
-               added=0;
+            do{
+                added=0;
                 for (List<Toy> list: sublists ) {
                     int ind = fromWhich(money, list);
                     if(list.size() - ind -1 == 0)
@@ -169,158 +182,13 @@ public class PlayRoom {
                     int price = list.get(choose).getPrice();
                     if(!toyEntityMap.containsKey(id)){
                         toyEntityMap.put(id,new ToyEntityInfo());
-                    toyEntityMap.get(id).addToAmount().addTotalPrice(price);
-                    money -= price;
-                    added++;
+                        toyEntityMap.get(id).addToAmount().addTotalPrice(price);
+                        money -= price;
+                        added++;
+                    }
                 }
-             }
             }while (added>0 && money>0);
             return toyEntityMap;
-        }
-        public void freeList(){
-            toyEntityMap.clear();
-        }
-
-        public List<Toy> toysInRoom(){
-            List<Toy> toyList = new ArrayList<>();
-            try{
-                Statement st = connection.createStatement();
-                ResultSet result = st.executeQuery(
-                        """
-                            SELECT tl.[toy_ID]
-                                 ,[t_name]
-                                 ,[ageGroupID]
-                                 ,[t_sizeID]
-                                 ,[price]
-                               FROM [Course_Work_Play_Room].[Toys].[ToysList] AS tl
-                               JOIN #ToysInRoom AS tir
-                               ON tl.toy_ID = tir.toy_ID
-                            """);
-                while (result.next()) {
-                    toyList.add(AdmDAO.createToyObj(result));
-                }
-            }catch (SQLException e){
-                System.err.println(e.getSQLState());
-            }
-            return toyList;
-        }
-        public List<Toy> toySublistByAgeGroup(AgeGroup ageGroup){
-            List<Toy> toyList = new ArrayList<>();
-            try{
-                Statement st = connection.createStatement();
-                ResultSet result = st.executeQuery(
-                        "SELECT tl.[toy_ID]\n" +
-                        "      ,[t_name]\n" +
-                        "      ,[ageGroupID]\n" +
-                        "      ,[t_sizeID]\n" +
-                        "      ,[price]\n" +
-                        "FROM [Course_Work_Play_Room].[Toys].[ToysList] AS tl\n" +
-                        "JOIN #ToysInRoom AS tir\n" +
-                        "ON tl.toy_ID = tir.toy_ID\n" +
-                        "WHERE tl.ageGroupID = "+(ageGroup.ordinal()+1));
-                while (result.next()) {
-                    toyList.add(AdmDAO.createToyObj(result,AgeGroup.TODDLER));
-                }
-            }catch (SQLException e){
-                System.err.println(e.getSQLState());
-            }
-            return toyList;
-        }
-
-        public List<Toy> sortToysByPrice(){
-            List<Toy> toyList = new ArrayList<>();
-            try{
-                Statement st = connection.createStatement();
-                ResultSet result = st.executeQuery("""
-                                SELECT tl.[toy_ID]
-                                      ,[t_name]
-                                      ,[ageGroupID]
-                                      ,[t_sizeID]
-                                      ,[price]
-                                FROM [Course_Work_Play_Room].[Toys].[ToysList] AS tl
-                                JOIN #ToysInRoom AS tir
-                                ON tl.toy_ID = tir.toy_ID
-                                ORDER BY tl.price
-                                """);
-                while (result.next()) {
-                    toyList.add(AdmDAO.createToyObj(result));
-                }
-            }catch (SQLException e){
-                System.err.println(e.getSQLState());
-            }
-            return toyList;
-        }
-        public List<Toy> sortToysByAmount(){
-            List<Toy> toyList = new ArrayList<>();
-            try{
-                Statement st = connection.createStatement();
-                ResultSet result = st.executeQuery("""
-                                SELECT tl.[toy_ID]
-                                        ,[t_name]
-                                        ,[ageGroupID]
-                                        ,[t_sizeID]
-                                        ,[price]
-                                FROM [Course_Work_Play_Room].[Toys].[ToysList] AS tl
-                                JOIN #ToysInRoom AS tir
-                                ON tl.toy_ID = tir.toy_ID
-                                ORDER BY tir.[amount]
-                                """);
-                while (result.next()) {
-                    toyList.add(AdmDAO.createToyObj(result));
-                }
-            }catch (SQLException e){
-                System.err.println(e.getSQLState());
-            }
-            return toyList;
-        }
-        public List<Toy> sortToysByAgeGroup(){
-            List<Toy> toyList = new ArrayList<>();
-            try{
-                Statement st = connection.createStatement();
-                ResultSet result = st.executeQuery("""
-                                                    SELECT tl.[toy_ID]
-                                                          ,[t_name]
-                                                          ,[ageGroupID]
-                                                          ,[t_sizeID]
-                                                          ,[price]
-                                                    FROM [Course_Work_Play_Room].[Toys].[ToysList] AS tl
-                                                    JOIN #ToysInRoom AS tir
-                                                    ON tl.toy_ID = tir.toy_ID
-                                                    ORDER BY tl.[ageGroupID]                                
-                                                    """);
-                while (result.next()) {
-                    toyList.add(AdmDAO.createToyObj(result));
-                }
-            }catch (SQLException e){
-                System.err.println(e.getSQLState());
-            }
-            return toyList;
-        }
-
-        public int getInitialMoney() {
-            return initialMoney;
-        }
-        public void setInitialMoney(int initialMoney) {
-            if(initialMoney < 0) throw new IllegalArgumentException();
-            this.initialMoney = initialMoney;
-        }
-        private void addToys(){
-            StringBuilder query = new StringBuilder("INSERT INTO #ToysInRoom([toy_ID],[amount],[total_price]) VALUES ");
-            toyEntityMap.forEach((key, value) -> query.append("(" + key + "," + value.getAmount() + "," + value.getTotalPrice() + "),"));
-            query.deleteCharAt(query.length()-1);
-            try{
-                Statement st = connection.createStatement();
-                st.execute(query.toString());
-            }catch (SQLException e){
-                System.err.println(e.getSQLState());
-            }
-        }
-
-        private void approveList(){
-            if(!isPlaying){
-                throw new IllegalStateException();
-            }
-            addToys();
         }
     }
 

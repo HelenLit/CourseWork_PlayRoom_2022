@@ -20,6 +20,6 @@ public class AddNewToy implements Command{
         int price = Integer.parseInt(scan.nextLine());
         AgeGroup age = AgeGroup.getAgeGroupByOrd(Integer.parseInt(scan.nextLine()));
         ToySize size = ToySize.getSizeByOrd(Integer.parseInt(scan.nextLine()));
-        adm.addToy(Toy.createToy(0,name,price,age,size));
+        adm.getToyList().addToy(Toy.createToy(0,name,price,age,size));
     }
 }

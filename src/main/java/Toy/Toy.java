@@ -2,14 +2,16 @@ package Toy;
 
 import Child.AgeGroup;
 
-public abstract class Toy {
+import java.util.Objects;
+
+public class Toy {
     private String name;
     private int price;
     private int id;
     private AgeGroup ageGroup;
     private ToySize toySize;
 
-    protected Toy(int id,String name, int price, AgeGroup ageGroup,ToySize toySize) {
+    public Toy(int id,String name, int price, AgeGroup ageGroup,ToySize toySize) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -52,12 +54,7 @@ public abstract class Toy {
         return toySize;
     }
     static public Toy createToy(int id, String name, int price, AgeGroup ageGroup,ToySize toySize){
-        return switch (ageGroup){
-            case TODDLER -> new ToddlerToy(id,name, price,toySize);
-            case MIDDLECHILD -> new MiddleChildToy(id,name, price,toySize);
-            case TEENAGER -> new TeenagerToy(id,name, price,toySize);
-            default -> null;
-        };
+        return new Toy(id,name, price,ageGroup,toySize);
     }
     static public Toy createToy(int id,String name, int price, int ageOrd,ToySize toySize){
         AgeGroup ageGr = AgeGroup.getAgeGroupByOrd(ageOrd);
@@ -71,5 +68,17 @@ public abstract class Toy {
                 "\nID: " + id +
                 "\nageGroup: " + ageGroup +
                 "\ntoySize: " + toySize;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Toy toy = (Toy) o;
+        return price == toy.price && id == toy.id && name.equals(toy.name) && ageGroup == toy.ageGroup && toySize == toy.toySize;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, price, id, ageGroup, toySize);
     }
 }

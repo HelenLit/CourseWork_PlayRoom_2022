@@ -1,7 +1,5 @@
 package Child;
 
-import Toy.ToySize;
-
 public enum AgeGroup {
     TODDLER(1),
     MIDDLECHILD(2),

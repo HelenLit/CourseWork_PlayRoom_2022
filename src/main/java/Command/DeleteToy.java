@@ -14,6 +14,6 @@ public class DeleteToy implements Command{
         System.out.println("Введіть ID іграшки, яку видалити ");
         Scanner scan = new Scanner(System.in);
         int ID = scan.nextInt();
-        adm.deleteToy(ID);
+        adm.getToyList().deleteToy(ID);
     }
 }

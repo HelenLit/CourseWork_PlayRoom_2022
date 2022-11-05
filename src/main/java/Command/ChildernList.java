@@ -9,6 +9,6 @@ public class ChildernList implements Command{
     }
     @Override
     public void execute(AdmDAO adm) {
-        System.out.println(adm.ChildernList());
+        System.out.println(adm.getPlayRoom().ChildrenList());
     }
 }
