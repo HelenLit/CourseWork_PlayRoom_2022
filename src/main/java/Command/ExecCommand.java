@@ -18,6 +18,7 @@ public class ExecCommand {
         commandMap.put("addt", new AddNewToy());
         commandMap.put("del", new DeleteToy());
         commandMap.put("price", new ViewPrice());
+        commandMap.put("actprc", new ViewActualPrice());
         commandMap.put("addage", new AddAgeGroups());
         commandMap.put("setprc", new SetPrice());
         commandMap.put("list", new CreateList());

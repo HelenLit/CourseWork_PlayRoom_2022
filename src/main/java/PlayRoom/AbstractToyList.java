@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public abstract class AbstractToyList {
     protected int initialMoney;
@@ -60,7 +62,9 @@ public abstract class AbstractToyList {
             price = result.getInt("price");
             toySize = ToySize.getSizeByOrd(result.getInt("t_sizeID"));
         }catch (SQLException e){
-            System.err.println("Could not extract String from column name in ResultSet: " + Arrays.toString(e.getStackTrace()));
+            Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+            logger.severe("Не вдалось отримати дані за назвою колонки");
+            e.printStackTrace();
             System.exit(e.getErrorCode());
         }
         return new Toy(id,name,price,ageGroup,toySize);
@@ -72,6 +76,8 @@ public abstract class AbstractToyList {
             else if (ageGroup == AgeGroup.MIDDLECHILD.ordinal()+1) return createToyObj(result,AgeGroup.MIDDLECHILD);
             else return createToyObj(result,AgeGroup.TEENAGER);
         }catch (SQLException e){
+            Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+            logger.severe("Не вдалось створити об'єкт іграшки");
             System.err.println(Arrays.toString(e.getStackTrace()));
             System.exit(e.getErrorCode());
         }
@@ -79,10 +85,11 @@ public abstract class AbstractToyList {
     }
     private void execVoidToyQuery(String query){
         try(Statement st = getConnection().createStatement()){
-            ResultSet result = st.executeQuery(query);
-
+            st.executeUpdate(query);
         }catch (SQLException e){
-            System.err.println(e.getSQLState());
+            Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+            logger.severe("Помилка виконання SQL-запиту");
+            e.printStackTrace();
         }
     }
     public void createToyList(){
@@ -96,12 +103,16 @@ public abstract class AbstractToyList {
                          """);
     }
     public void trunkToyList(){
+        Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+        logger.fine("Видалення даних з таблиці з іграшками, які знаходились в кімнаті");
         execVoidToyQuery(
                          """
                         TRUNCATE TABLE #ToysInRoom
                         """);
     }
     public void deleteToy(int id) {
+        Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+        logger.fine("Видалення іграшки з ID("+id+") з БД");
         execVoidToyQuery(
                     "USE [Course_Work_Play_Room]\n" +
                             "DELETE FROM\n" +
@@ -110,6 +121,8 @@ public abstract class AbstractToyList {
                             "   [toy_ID] = "+ id);
     }
     public void addToy(Toy toy) {
+        Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+        logger.fine("Додавання "+toy.getName()+" в БД");
         execVoidToyQuery(
                     "USE [Course_Work_Play_Room]\n" +
                             "INSERT INTO\n" +
@@ -130,6 +143,8 @@ public abstract class AbstractToyList {
         return toyList;
     }
     public List<Toy> allToysByAgeGroup(AgeGroup ageGroup) {
+        Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+        logger.info("Пошук усіх іграшок у БД з віковою групою " + ageGroup.name());
         return execToyQuery(
                     "USE [Course_Work_Play_Room]\n" +
                             "SELECT *\n" +
@@ -145,6 +160,8 @@ public abstract class AbstractToyList {
 
     }
     public List<Toy> toysInRoom(){
+        Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+        logger.info("Виведення усіх іграшок з БД, які є у кімнаті");
         return execToyQuery(
                 """
                     SELECT tl.[toy_ID]
@@ -159,6 +176,8 @@ public abstract class AbstractToyList {
 
     }
     public List<Toy> toySublistByAgeGroup(AgeGroup ageGroup){
+        Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+        logger.info("Пошук усіх іграшок у кімнаті з віковою групою " + ageGroup.name());
         return execToyQuery(
                 "SELECT tl.[toy_ID]\n" +
                         "      ,[t_name]\n" +
@@ -171,6 +190,8 @@ public abstract class AbstractToyList {
                         "WHERE tl.ageGroupID = "+(ageGroup.ordinal()+1));
     }
     public List<Toy> sortToysBySize(){
+        Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+        logger.info("Сортування іграшок, що у кімнаті, за розміром");
         return execToyQuery("""
                                 SELECT tl.[toy_ID]
                                       ,[t_name]
@@ -184,6 +205,8 @@ public abstract class AbstractToyList {
                                 """);
     }
     public List<Toy> sortToysByPrice(){
+        Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+        logger.info("Сортування іграшок, що у кімнаті, за ціною");
         return execToyQuery("""
                                 SELECT tl.[toy_ID]
                                       ,[t_name]
@@ -197,6 +220,8 @@ public abstract class AbstractToyList {
                                 """);
     }
     public List<Toy> sortToysByAmount(){
+        Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+        logger.info("Сортування іграшок, що у кімнаті, за кількістю");
         return execToyQuery("""
                                 SELECT tl.[toy_ID]
                                         ,[t_name]
@@ -210,6 +235,8 @@ public abstract class AbstractToyList {
                                 """);
     }
     public List<Toy> sortToysByAgeGroup(){
+        Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+        logger.info("Сортування іграшок, що у кімнаті, за віковою групою");
         return execToyQuery("""
                                                     SELECT tl.[toy_ID]
                                                           ,[t_name]
@@ -231,17 +258,23 @@ public abstract class AbstractToyList {
         this.initialMoney = initialMoney;
     }
     protected void addToys(){
+        Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+        logger.info("Заповнення кімнати підібраним списком іграшок");
         StringBuilder query = new StringBuilder("INSERT INTO #ToysInRoom([toy_ID],[amount],[total_price]) VALUES ");
         toyEntityMap.forEach((key, value) -> query.append("(" + key + "," + value.getAmount() + "," + value.getTotalPrice() + "),"));
         query.deleteCharAt(query.length()-1);
         try(Statement st = getConnection().createStatement()){
             st.execute(query.toString());
         }catch (SQLException e){
+            logger.severe("Не вдалось додати якусь іграшу у таблицю кімнати");
             System.err.println(e.getSQLState());
         }
     }
     protected void approveList(){
+        Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+        logger.config("Перевірка, чи можна підтвердити список іграшок");
         if(!ifPlaying()){
+            logger.severe("Перевірка пройшла невдало, кімната вже відкрита");
             throw new IllegalStateException();
         }
         addToys();

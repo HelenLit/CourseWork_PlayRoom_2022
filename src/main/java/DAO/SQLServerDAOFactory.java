@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.logging.Logger;
 
 public class SQLServerDAOFactory extends DAOFactory {
 
@@ -22,6 +23,8 @@ public class SQLServerDAOFactory extends DAOFactory {
 
     @Override
     public void setProperties(String dataBaseName, String user, String password){
+        Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+        logger.info("Встановлення параметрів для з'єдання з БД");
         setDataBaseName(dataBaseName);
         setUser(user);
         setPassword(password);
@@ -33,14 +36,18 @@ public class SQLServerDAOFactory extends DAOFactory {
 
     @Override
     synchronized protected Connection getConnection() {
+        Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
         try {
             if (con == null) {
+                logger.config("Спроба створити з'єднання з БД");
                 con = DriverManager.getConnection(URL, user, password);
             }
         }catch (SQLException e){
+            logger.severe("Спроба створити з'єднання з БД невдала");
             System.err.println("Could not establish connection to database: " + Arrays.toString(e.getStackTrace()));
             System.exit(e.getErrorCode());
         }
+        logger.fine("Спроба створити з'єднання з БД пройшла успішно");
         return con;
     }
 

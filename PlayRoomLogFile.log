@@ -1,0 +1,16 @@
+лист. 11, 2022 10:33:16 ДП org.example.Main main
+ALL: Підключення
+лист. 11, 2022 10:33:17 ДП DAO.SQLServerDAOFactory setProperties
+INFO: Встановлення параметрів для з'єдання з БД
+лист. 11, 2022 10:33:17 ДП DAO.SQLServerDAOFactory getConnection
+CONFIG: Спроба створити з'єднання з БД
+лист. 11, 2022 10:33:17 ДП DAO.SQLServerDAOFactory getConnection
+FINE: Спроба створити з'єднання з БД пройшла успішно
+лист. 11, 2022 10:33:17 ДП DAO.AdmDAO setConnection
+CONFIG: AdmDAO встановлює підключення до БД
+лист. 11, 2022 10:33:17 ДП DAO.AdmDAO createPlayRoom
+CONFIG: Ініціалізація ігрової кімнати
+лист. 11, 2022 10:33:27 ДП PlayRoom.PlayRoom registerChild
+INFO: Реєстрація дитини
+лист. 11, 2022 10:33:27 ДП PlayRoom.PlayRoom registerChild
+FINE: Реєстрація успішна, так як дітей у кімнаті менше за 20

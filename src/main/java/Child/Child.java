@@ -3,6 +3,7 @@ package Child;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.logging.Logger;
 
 public class Child {
     private String fname;
@@ -84,6 +85,8 @@ public class Child {
             ageGroup = AgeGroup.getAgeGroupByOrd(result.getInt("ageGroupID"));
             pcontact = result.getString("parent_contact");
         }catch (SQLException e){
+            Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+            logger.severe("Не вдалось отримати дані за назвою колонки");
             System.err.println("Could not extract data from column name in ResultSet: " + Arrays.toString(e.getStackTrace()));
             System.exit(e.getErrorCode());
         }

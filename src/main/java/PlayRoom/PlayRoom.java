@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.*;
+import java.util.logging.Logger;
 
 //Singleton
 public class PlayRoom {
@@ -44,9 +45,13 @@ public class PlayRoom {
 
     public boolean registerChild(Child child){
         check();
+        Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+        logger.info("Реєстрація дитини");
         if(childrenInRoom.size() < MAXCAPACITY){
+            logger.fine("Реєстрація успішна, так як дітей у кімнаті менше за " + MAXCAPACITY);
             return childrenInRoom.add(child);
         }else {
+            logger.severe("Реєстрація не пройшла, так як дітей у кімнаті вже більше за " + MAXCAPACITY);
             return false;
         }
     }
@@ -58,12 +63,16 @@ public class PlayRoom {
                 childrenList.add(Child.createChildObj(result));
             }
         }catch (SQLException e){
+            Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+            logger.severe("Помилка виконання запиту з таблицею зареєстрованих дітей");
             System.err.println(Arrays.toString(e.getStackTrace()));
             System.exit(e.getErrorCode());
         }
         return childrenList;
     }
     public List<Child> ChildrenList() {
+        Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+        logger.info("Виведення списку зареєстрованих дітей");
         return execChildListQuery("""
                 USE [Course_Work_Play_Room]
                 SELECT *
@@ -72,10 +81,12 @@ public class PlayRoom {
     }
     protected void execChildVoidQuery(String query){
         try(Statement st = connection.createStatement();){
-            ResultSet result = st.executeQuery(query);
+            st.executeUpdate(query);
         }catch (SQLException e){
+            Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+            logger.severe("Помилка виконання запиту з таблицею зареєстрованих дітей");
             System.err.println(Arrays.toString(e.getStackTrace()));
-            System.exit(e.getErrorCode());
+            e.printStackTrace();
         }
     }
     public void FreeChildrenList() {
@@ -84,6 +95,8 @@ public class PlayRoom {
                 """);
     }
     private void addChildren(){
+        Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+        logger.info("Додавання в БД зареєстрованих дітей");
         StringBuilder query = new StringBuilder("INSERT INTO [Client].[Registered_Children]" +
                 "([fname],[lname],[ageGroupID],[parent_contact]) VALUES");
         childrenInRoom.forEach(ch -> query.append("('" + ch.getFname() + "','" + ch.getLname() + "'," + ch.getAgeGroup().getOrd() + ",'" + ch.getContact()+"'),"));
@@ -92,10 +105,13 @@ public class PlayRoom {
             Statement st = connection.createStatement();
             st.execute(query.toString());
         }catch (SQLException e){
-            System.err.println(e.getSQLState());
+            logger.severe("Не вдалось додати в БД зареєстрованих дітей");
+            e.printStackTrace();
         }
     }
     private int autoPrepRoom(){
+        Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+        logger.info("Автоматичний підбір вікових груп");
         List<AgeGroup> ageGroupList = new ArrayList<>();
         for (Child ch: childrenInRoom) {
             if(!ageGroupList.contains(ch.getAgeGroup()))
@@ -105,20 +121,27 @@ public class PlayRoom {
         return ageGroupList.size();
     }
     public void startGroup() {
-        isPlaying = true;
+        Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+        logger.config("Спроба відкриття кімнати");
         if(toyList.toyEntityMap.size()==0){
-            System.err.println("РџРµСЂРµРґ РІС–РєСЂРёС‚С‚СЏРј РєС–РјРЅР°С‚Рё, РјР°С” Р±СѓС‚Рё СЃС‚РІРѕСЂРµРЅРёР№ СЃРїРёСЃРѕРє С–РіСЂР°С€РѕРє");
+            logger.severe("Не вдалося відкрити кімнату, тому що спершу має бути створений список іграшок");
+            System.err.println("Перед вікриттям кімнати, має бути створений список іграшок");
             return;
         }
+        if(isPlaying) return;
+        logger.fine("Кімнату успішно відкрито, заповнюються місця для зареєстрованих дітей");
+        isPlaying = true;
         toyList.createToyList();
         addChildren();
         toyList.approveList();
     }
     public void freeRoom(){
+        Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+        logger.config("Звільнення кімнати");
         toyList.trunkToyList();
         toyList.freeList();
         FreeChildrenList();
-        System.out.println("РљС–РјРЅР°С‚Сѓ Р·РІС–Р»СЊРЅРµРЅРѕ.");
+        System.out.println("Кімнату звільнено.");
     }
     public ToyList getToyList() {
            return toyList;
@@ -149,12 +172,29 @@ public class PlayRoom {
             super(initialMoney);
         }
 
+        public int getActualMoney(){
+            Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+            logger.info("Виведення фактичної ціни усіх іграшок");
+            int result = 0;
+            if(toyEntityMap == null || toyEntityMap.size() == 0){
+                logger.severe("Спершу потрібно створити список іграшок!");
+                return 0;
+            }
+            for (ToyEntityInfo tei: toyEntityMap.values()) {
+                result += tei.getTotalPrice();
+            }
+            return result;
+        }
+
         @SafeVarargs
         @Override
         public final Map<Integer, ToyEntityInfo> CreateToyMap(List<Toy>... ageGroupToys) {
+            Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+            logger.info("Спроба підібрати список іграшок");
             check();
             if(autoPrepRoom() == 0){
-                System.err.println("РџРµСЂРµРґ РІС–РєСЂРёС‚С‚СЏРј РєС–РјРЅР°С‚Рё, РјР°С” Р·Р°СЂРµС”СЃС‚СЂСѓРІР°С‚РёСЃСЊ С…РѕС‡Р° Р± 1 РґРёС‚РёРЅР°");
+                System.err.println("Перед вікриттям кімнати, має зареєструватись хоча б 1 дитина");
+                logger.severe("Спроба невдала, тому що перед вікриттям кімнати, має зареєструватись хоча б 1 дитина");
                 return null;
             }
             toyEntityMap = new HashMap<>();
@@ -188,6 +228,7 @@ public class PlayRoom {
                     }
                 }
             }while (added>0 && money>0);
+            logger.info("Список успішно підібрано");
             return toyEntityMap;
         }
     }

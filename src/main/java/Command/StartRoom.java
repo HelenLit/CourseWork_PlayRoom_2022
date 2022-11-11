@@ -1,6 +1,7 @@
 package Command;
 
 import DAO.AdmDAO;
+import Email.EmailSender;
 
 public class StartRoom implements Command{
     @Override
@@ -12,5 +13,7 @@ public class StartRoom implements Command{
     public void execute(AdmDAO adm) {
         System.out.println("Затвердження списку іграшок, відкриття кімнати");
         adm.getPlayRoom().startGroup();
+        EmailSender.send("Playroom event","Playroom is opened");
+
     }
 }

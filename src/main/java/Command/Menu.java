@@ -1,6 +1,7 @@
 package Command;
 
 import DAO.AdmDAO;
+import Email.EmailSender;
 
 import java.util.Map;
 import java.util.Scanner;
@@ -25,7 +26,12 @@ public class Menu {
                 System.out.println("Return from this menu");
                 return;
             }
-            commandMap.get(command).execute(adm);
+            try {
+                commandMap.get(command).execute(adm);
+            }
+            catch (NullPointerException e){
+                EmailSender.send("Command error","The command \""+command + "\" is not found");
+            }
         }
     }
 }
