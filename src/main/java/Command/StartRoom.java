@@ -14,6 +14,5 @@ public class StartRoom implements Command{
         System.out.println("Затвердження списку іграшок, відкриття кімнати");
         adm.getPlayRoom().startGroup();
         EmailSender.send("Playroom event","Playroom is opened");
-
     }
 }

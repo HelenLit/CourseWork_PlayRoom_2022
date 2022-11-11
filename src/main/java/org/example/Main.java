@@ -23,8 +23,6 @@ public class Main {
             logger.addHandler(new FileHandler());
         } catch (IOException e) {
             System.err.println("Помилка з конфігурацією логгера.");
-            e.printStackTrace();
-            System.exit(e.hashCode());
         }
     }
     public static void main(String[] args) throws Exception {

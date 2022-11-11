@@ -13,6 +13,5 @@ public class EndRoom implements Command{
         System.out.println("Звільнення кімнати");
         adm.getPlayRoom().freeRoom();
         EmailSender.send("Playroom event","Playroom is closed");
-
     }
 }
