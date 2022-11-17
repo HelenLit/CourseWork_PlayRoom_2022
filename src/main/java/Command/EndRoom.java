@@ -10,7 +10,7 @@ public class EndRoom implements Command{
     }
     @Override
     public void execute(AdmDAO adm) {
-        System.out.println("Р—РІС–Р»СЊРЅРµРЅРЅСЏ РєС–РјРЅР°С‚Рё");
+        System.out.println("Звільнення кімнати");
         adm.getPlayRoom().freeRoom();
         EmailSender.send("Playroom event","Playroom is closed");
     }

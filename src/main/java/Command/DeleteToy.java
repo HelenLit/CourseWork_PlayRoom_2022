@@ -15,5 +15,6 @@ public class DeleteToy implements Command{
         Scanner scan = new Scanner(System.in);
         int ID = scan.nextInt();
         adm.getToyList().deleteToy(ID);
+
     }
 }

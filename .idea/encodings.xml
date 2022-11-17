@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/main" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/GUI" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/java/Command/EndRoom.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/java/Command/Menu.java" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/src/main/java/Command/ViewActualPrice.java" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/src/main/java/DAO/AdmDAO.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/java/GUI" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/java/Main.java" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/src/main/java/PlayRoom/PlayRoom.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/main/java/org/example/Main.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/java/resources" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/encodings.xml" charset="windows-1251" />
   </component>
 </project>

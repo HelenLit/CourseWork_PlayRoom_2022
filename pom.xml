@@ -13,7 +13,7 @@
         <project.build.sourceEncoding>windows-1251</project.build.sourceEncoding>
         <project.reporting.outputEncoding>windows-1251</project.reporting.outputEncoding>
         <java.version>18</java.version>
-        <junit5.version>5.6.2</junit5.version>
+        <junit5.version>5.8.2</junit5.version>
     </properties>
 
 
@@ -62,19 +62,37 @@
             <version>4.6.1</version>
             <scope>test</scope>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>javax.mail</groupId>-->
-<!--            <artifactId>javax.mail-api</artifactId>-->
-<!--            <version>1.5.3</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>com.sun.mail</groupId>-->
-<!--            <artifactId>javax.mail</artifactId>-->
-<!--            <version>1.5.3</version>-->
-<!--        </dependency>-->
+
+        <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-controls -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>19</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-fxml -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>19</version>
+        </dependency>
+
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <!-- Here it is placed src/main/java-->
+                <directory>src/main</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.fxml</include>
+                    <!-- include>**/fxml/*.fxml</include-->
+                    <!-- If you want to make a package name specifically for the fxml file, add a setting like the above line -->
+                    <!-- after that, use getResource("fxml/xx.fxml") like this -->
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

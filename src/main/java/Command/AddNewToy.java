@@ -21,5 +21,6 @@ public class AddNewToy implements Command{
         AgeGroup age = AgeGroup.getAgeGroupByOrd(Integer.parseInt(scan.nextLine()));
         ToySize size = ToySize.getSizeByOrd(Integer.parseInt(scan.nextLine()));
         adm.getToyList().addToy(Toy.createToy(0,name,price,age,size));
+
     }
 }

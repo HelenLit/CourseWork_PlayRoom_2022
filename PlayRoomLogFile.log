@@ -1,16 +1,54 @@
-лист. 11, 2022 10:33:16 ДП org.example.Main main
+лист. 17, 2022 1:49:48 ПП Main main
 ALL: Підключення
-лист. 11, 2022 10:33:17 ДП DAO.SQLServerDAOFactory setProperties
+лист. 17, 2022 1:49:49 ПП DAO.SQLServerDAOFactory setProperties
 INFO: Встановлення параметрів для з'єдання з БД
-лист. 11, 2022 10:33:17 ДП DAO.SQLServerDAOFactory getConnection
+лист. 17, 2022 1:49:49 ПП DAO.SQLServerDAOFactory getConnection
 CONFIG: Спроба створити з'єднання з БД
-лист. 11, 2022 10:33:17 ДП DAO.SQLServerDAOFactory getConnection
+лист. 17, 2022 1:49:50 ПП DAO.SQLServerDAOFactory getConnection
 FINE: Спроба створити з'єднання з БД пройшла успішно
-лист. 11, 2022 10:33:17 ДП DAO.AdmDAO setConnection
+лист. 17, 2022 1:49:50 ПП DAO.AdmDAO setConnection
 CONFIG: AdmDAO встановлює підключення до БД
-лист. 11, 2022 10:33:17 ДП DAO.AdmDAO createPlayRoom
+лист. 17, 2022 1:49:50 ПП DAO.AdmDAO createPlayRoom
 CONFIG: Ініціалізація ігрової кімнати
-лист. 11, 2022 10:33:27 ДП PlayRoom.PlayRoom registerChild
-INFO: Реєстрація дитини
-лист. 11, 2022 10:33:27 ДП PlayRoom.PlayRoom registerChild
-FINE: Реєстрація успішна, так як дітей у кімнаті менше за 20
+лист. 17, 2022 1:50:01 ПП DAO.AdmDAO getToyList
+INFO: AdmDAO повертає об'єкт ToyList
+лист. 17, 2022 1:50:01 ПП PlayRoom.AbstractToyList allToysByAgeGroup
+INFO: Пошук усіх іграшок у БД з віковою групою TODDLER
+лист. 17, 2022 1:50:02 ПП DAO.AdmDAO getToyList
+INFO: AdmDAO повертає об'єкт ToyList
+лист. 17, 2022 1:50:02 ПП PlayRoom.AbstractToyList allToysByAgeGroup
+INFO: Пошук усіх іграшок у БД з віковою групою MIDDLECHILD
+лист. 17, 2022 1:50:02 ПП DAO.AdmDAO getToyList
+INFO: AdmDAO повертає об'єкт ToyList
+лист. 17, 2022 1:50:02 ПП PlayRoom.AbstractToyList allToysByAgeGroup
+INFO: Пошук усіх іграшок у БД з віковою групою TEENAGER
+лист. 17, 2022 1:50:02 ПП PlayRoom.PlayRoom$ToyList getActualMoney
+INFO: Виведення фактичної ціни усіх іграшок
+лист. 17, 2022 1:50:02 ПП PlayRoom.PlayRoom$ToyList getActualMoney
+SEVERE: Спершу потрібно створити список іграшок!
+лист. 17, 2022 1:50:13 ПП PlayRoom.AbstractToyList toysInRoom
+INFO: Виведення усіх іграшок з БД, які є у кімнаті
+лист. 17, 2022 1:50:13 ПП PlayRoom.PlayRoom$ToyList getActualMoney
+INFO: Виведення фактичної ціни усіх іграшок
+лист. 17, 2022 1:50:13 ПП PlayRoom.PlayRoom$ToyList getActualMoney
+SEVERE: Спершу потрібно створити список іграшок!
+лист. 17, 2022 1:50:24 ПП DAO.AdmDAO getToyList
+INFO: AdmDAO повертає об'єкт ToyList
+лист. 17, 2022 1:50:24 ПП PlayRoom.AbstractToyList allToysByAgeGroup
+INFO: Пошук усіх іграшок у БД з віковою групою TODDLER
+лист. 17, 2022 1:50:24 ПП DAO.AdmDAO getToyList
+INFO: AdmDAO повертає об'єкт ToyList
+лист. 17, 2022 1:50:24 ПП PlayRoom.AbstractToyList allToysByAgeGroup
+INFO: Пошук усіх іграшок у БД з віковою групою MIDDLECHILD
+лист. 17, 2022 1:50:24 ПП DAO.AdmDAO getToyList
+INFO: AdmDAO повертає об'єкт ToyList
+лист. 17, 2022 1:50:24 ПП PlayRoom.AbstractToyList allToysByAgeGroup
+INFO: Пошук усіх іграшок у БД з віковою групою TEENAGER
+лист. 17, 2022 1:50:24 ПП PlayRoom.PlayRoom$ToyList getActualMoney
+INFO: Виведення фактичної ціни усіх іграшок
+лист. 17, 2022 1:50:24 ПП PlayRoom.PlayRoom$ToyList getActualMoney
+SEVERE: Спершу потрібно створити список іграшок!
+лист. 17, 2022 1:50:53 ПП PlayRoom.PlayRoom startGroup
+CONFIG: Спроба відкриття кімнати
+лист. 17, 2022 1:50:53 ПП Controller startRoom
+SEVERE: Could not open room because list of toys is not created

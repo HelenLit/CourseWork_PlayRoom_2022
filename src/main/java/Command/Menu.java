@@ -5,6 +5,7 @@ import Email.EmailSender;
 
 import java.util.Map;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 public class Menu {
     private Map<String, Command> commandMap;
@@ -20,7 +21,7 @@ public class Menu {
         Scanner scan = new Scanner(System.in);
         while(true){
             printInfo();
-            System.out.println("\nР’РІРµРґС–С‚СЊ РєРѕРјР°РЅРґСѓ: ");
+            System.out.println("\nВведіть команду: ");
             String command = scan.nextLine().trim();
             if(command.contentEquals("ret")){
                 System.out.println("Return from this menu");
@@ -30,6 +31,8 @@ public class Menu {
                 commandMap.get(command).execute(adm);
             }
             catch (NullPointerException e){
+                Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+                logger.severe("Не правильно введена команда");
                 EmailSender.send("Command error","The command \""+command + "\" is not found");
             }
         }

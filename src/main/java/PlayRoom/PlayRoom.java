@@ -141,7 +141,7 @@ public class PlayRoom {
         toyList.trunkToyList();
         toyList.freeList();
         FreeChildrenList();
-        System.out.println("Кімнату звільнено.");
+        System.out.println("Кімнату звільнено");
     }
     public ToyList getToyList() {
            return toyList;
