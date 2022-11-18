@@ -84,7 +84,7 @@ public class RegisterController implements Initializable {
 
         String credentials = parentsCredentialsField.getText();
         if(credentials.equals("") || !checkNumber(credentials))
-            parentsCredentialsLabel.setText("Неправильно введені контакти батьків");
+            parentsCredentialsLabel.setText("Неправильно введений контакт одного з батьків.");
 
         if(firstName.equals("") || lastName.equals("") || type.equals("") || credentials.equals("") || !checkNumber(credentials)){
             return;

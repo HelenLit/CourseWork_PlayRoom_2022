@@ -38,3 +38,4 @@ build/
 .DS_Store
 
 PlayRoomLogFile.log
+src/main/java/Email/EmailSender.java
