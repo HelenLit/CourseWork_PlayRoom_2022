@@ -222,6 +222,12 @@ public class Controller{
         mainAnchor.setDisable(false);
     }
 
+    public void sortBySize(javafx.event.ActionEvent e) throws IOException{
+        listOfToys.getItems().clear();
+        updateList(Main.adm.getPlayRoom().getToyList().sortToysBySize());
+        updatePrice();
+    }
+
     public void sortByAge(javafx.event.ActionEvent e) throws IOException {
         listOfToys.getItems().clear();
         updateList(Main.adm.getPlayRoom().getToyList().sortToysByAgeGroup());

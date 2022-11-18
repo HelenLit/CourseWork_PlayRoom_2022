@@ -86,7 +86,6 @@ public class PlayRoom {
             Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
             logger.severe("Помилка виконання запиту з таблицею зареєстрованих дітей");
             System.err.println(Arrays.toString(e.getStackTrace()));
-            e.printStackTrace();
         }
     }
     public void FreeChildrenList() {
@@ -106,7 +105,6 @@ public class PlayRoom {
             st.execute(query.toString());
         }catch (SQLException e){
             logger.severe("Не вдалось додати в БД зареєстрованих дітей");
-            e.printStackTrace();
         }
     }
     private int autoPrepRoom(){

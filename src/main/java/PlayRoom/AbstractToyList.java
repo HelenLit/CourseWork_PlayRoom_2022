@@ -64,7 +64,6 @@ public abstract class AbstractToyList {
         }catch (SQLException e){
             Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
             logger.severe("Не вдалось отримати дані за назвою колонки");
-            e.printStackTrace();
             System.exit(e.getErrorCode());
         }
         return new Toy(id,name,price,ageGroup,toySize);
@@ -89,7 +88,6 @@ public abstract class AbstractToyList {
         }catch (SQLException e){
             Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
             logger.severe("Помилка виконання SQL-запиту");
-            e.printStackTrace();
         }
     }
     public void createToyList(){
