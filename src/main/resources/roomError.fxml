@@ -14,7 +14,7 @@
             <Image url="file:/D:/Projects/Java/CourseWork_PlayRoom_2022/src/main/resources/stars.png" />
          </image>
       </ImageView>
-      <Label layoutX="15.0" layoutY="55.0" text="Could not do this operation with playroom because list of toys is not created">
+      <Label layoutX="15.0" layoutY="55.0" text="Не вдалось виконати цю операцію з кімнатою, неправильна послідовність">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

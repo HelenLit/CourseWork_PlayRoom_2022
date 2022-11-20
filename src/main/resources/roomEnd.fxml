@@ -13,7 +13,7 @@
          <image>
             <Image url="file:/D:/Projects/Java/CourseWork_PlayRoom_2022/src/main/resources/simplerainbow.png" />
          </image></ImageView>
-      <Label layoutX="71.0" layoutY="74.0" text="Кімнату закрито успішно">
+      <Label layoutX="71.0" layoutY="74.0" text="Кімнату успішно закрито">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>

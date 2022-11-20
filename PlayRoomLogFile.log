@@ -1,452 +1,66 @@
-лист. 18, 2022 10:11:06 ПП Main main
+лист. 20, 2022 12:48:12 ПП Main main
 ALL: Підключення
-лист. 18, 2022 10:11:06 ПП DAO.SQLServerDAOFactory setProperties
+лист. 20, 2022 12:48:12 ПП DAO.SQLServerDAOFactory setProperties
 INFO: Встановлення параметрів для з'єдання з БД
-лист. 18, 2022 10:11:06 ПП DAO.SQLServerDAOFactory getConnection
+лист. 20, 2022 12:48:12 ПП DAO.SQLServerDAOFactory getConnection
 CONFIG: Спроба створити з'єднання з БД
-лист. 18, 2022 10:11:06 ПП DAO.SQLServerDAOFactory getConnection
+лист. 20, 2022 12:48:13 ПП DAO.SQLServerDAOFactory getConnection
 FINE: Спроба створити з'єднання з БД пройшла успішно
-лист. 18, 2022 10:11:06 ПП DAO.AdmDAO setConnection
+лист. 20, 2022 12:48:13 ПП DAO.AdmDAO setConnection
 CONFIG: AdmDAO встановлює підключення до БД
-лист. 18, 2022 10:11:06 ПП DAO.AdmDAO createPlayRoom
+лист. 20, 2022 12:48:13 ПП DAO.AdmDAO createPlayRoom
 CONFIG: Ініціалізація ігрової кімнати
-лист. 18, 2022 10:11:37 ПП PlayRoom.PlayRoom registerChild
+лист. 20, 2022 12:48:23 ПП PlayRoom.PlayRoom registerChild
 INFO: Реєстрація дитини
-лист. 18, 2022 10:11:37 ПП PlayRoom.PlayRoom registerChild
+лист. 20, 2022 12:48:23 ПП PlayRoom.PlayRoom registerChild
 FINE: Реєстрація успішна, так як дітей у кімнаті менше за 20
-лист. 18, 2022 10:11:47 ПП PlayRoom.PlayRoom$ToyList getActualMoney
+лист. 20, 2022 12:48:30 ПП PlayRoom.PlayRoom$ToyList getActualMoney
 INFO: Виведення фактичної ціни усіх іграшок
-лист. 18, 2022 10:11:47 ПП PlayRoom.PlayRoom$ToyList getActualMoney
+лист. 20, 2022 12:48:30 ПП PlayRoom.PlayRoom$ToyList getActualMoney
 SEVERE: Спершу потрібно створити список іграшок!
-лист. 18, 2022 10:11:51 ПП DAO.AdmDAO getToyList
+лист. 20, 2022 12:48:33 ПП DAO.AdmDAO getToyList
 INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:11:51 ПП PlayRoom.AbstractToyList allToysByAgeGroup
+лист. 20, 2022 12:48:33 ПП PlayRoom.AbstractToyList allToysByAgeGroup
 INFO: Пошук усіх іграшок у БД з віковою групою TODDLER
-лист. 18, 2022 10:11:51 ПП DAO.AdmDAO getToyList
+лист. 20, 2022 12:48:33 ПП DAO.AdmDAO getToyList
 INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:11:51 ПП PlayRoom.AbstractToyList allToysByAgeGroup
+лист. 20, 2022 12:48:33 ПП PlayRoom.AbstractToyList allToysByAgeGroup
 INFO: Пошук усіх іграшок у БД з віковою групою MIDDLECHILD
-лист. 18, 2022 10:11:51 ПП DAO.AdmDAO getToyList
+лист. 20, 2022 12:48:33 ПП DAO.AdmDAO getToyList
 INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:11:51 ПП PlayRoom.AbstractToyList allToysByAgeGroup
+лист. 20, 2022 12:48:33 ПП PlayRoom.AbstractToyList allToysByAgeGroup
 INFO: Пошук усіх іграшок у БД з віковою групою TEENAGER
-лист. 18, 2022 10:11:51 ПП PlayRoom.PlayRoom$ToyList CreateToyMap
+лист. 20, 2022 12:48:33 ПП PlayRoom.PlayRoom$ToyList CreateToyMap
 INFO: Спроба підібрати список іграшок
-лист. 18, 2022 10:11:51 ПП PlayRoom.PlayRoom autoPrepRoom
+лист. 20, 2022 12:48:33 ПП PlayRoom.PlayRoom autoPrepRoom
 INFO: Автоматичний підбір вікових груп
-лист. 18, 2022 10:11:51 ПП PlayRoom.PlayRoom$ToyList CreateToyMap
+лист. 20, 2022 12:48:33 ПП PlayRoom.PlayRoom$ToyList CreateToyMap
 INFO: Список успішно підібрано
-лист. 18, 2022 10:11:51 ПП DAO.AdmDAO getToyList
+лист. 20, 2022 12:48:33 ПП DAO.AdmDAO getToyList
 INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:11:51 ПП PlayRoom.AbstractToyList allToysByAgeGroup
+лист. 20, 2022 12:48:33 ПП PlayRoom.AbstractToyList allToysByAgeGroup
 INFO: Пошук усіх іграшок у БД з віковою групою TODDLER
-лист. 18, 2022 10:11:51 ПП DAO.AdmDAO getToyList
+лист. 20, 2022 12:48:33 ПП DAO.AdmDAO getToyList
 INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:11:51 ПП PlayRoom.AbstractToyList allToysByAgeGroup
+лист. 20, 2022 12:48:33 ПП PlayRoom.AbstractToyList allToysByAgeGroup
 INFO: Пошук усіх іграшок у БД з віковою групою MIDDLECHILD
-лист. 18, 2022 10:11:52 ПП DAO.AdmDAO getToyList
+лист. 20, 2022 12:48:33 ПП DAO.AdmDAO getToyList
 INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:11:52 ПП PlayRoom.AbstractToyList allToysByAgeGroup
+лист. 20, 2022 12:48:33 ПП PlayRoom.AbstractToyList allToysByAgeGroup
 INFO: Пошук усіх іграшок у БД з віковою групою TEENAGER
-лист. 18, 2022 10:11:52 ПП PlayRoom.PlayRoom$ToyList getActualMoney
+лист. 20, 2022 12:48:33 ПП PlayRoom.PlayRoom$ToyList getActualMoney
 INFO: Виведення фактичної ціни усіх іграшок
-лист. 18, 2022 10:12:05 ПП PlayRoom.PlayRoom ChildrenList
-INFO: Виведення списку зареєстрованих дітей
-лист. 18, 2022 10:12:10 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:10 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TODDLER
-лист. 18, 2022 10:12:10 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:10 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою MIDDLECHILD
-лист. 18, 2022 10:12:10 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:10 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TEENAGER
-лист. 18, 2022 10:12:10 ПП PlayRoom.PlayRoom$ToyList CreateToyMap
-INFO: Спроба підібрати список іграшок
-лист. 18, 2022 10:12:10 ПП PlayRoom.PlayRoom autoPrepRoom
-INFO: Автоматичний підбір вікових груп
-лист. 18, 2022 10:12:10 ПП PlayRoom.PlayRoom$ToyList CreateToyMap
-INFO: Список успішно підібрано
-лист. 18, 2022 10:12:10 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:10 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TODDLER
-лист. 18, 2022 10:12:10 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:10 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою MIDDLECHILD
-лист. 18, 2022 10:12:10 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:10 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TEENAGER
-лист. 18, 2022 10:12:10 ПП PlayRoom.PlayRoom$ToyList getActualMoney
-INFO: Виведення фактичної ціни усіх іграшок
-лист. 18, 2022 10:12:13 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:13 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TODDLER
-лист. 18, 2022 10:12:13 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:13 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою MIDDLECHILD
-лист. 18, 2022 10:12:13 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:13 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TEENAGER
-лист. 18, 2022 10:12:13 ПП PlayRoom.PlayRoom$ToyList CreateToyMap
-INFO: Спроба підібрати список іграшок
-лист. 18, 2022 10:12:13 ПП PlayRoom.PlayRoom autoPrepRoom
-INFO: Автоматичний підбір вікових груп
-лист. 18, 2022 10:12:13 ПП PlayRoom.PlayRoom$ToyList CreateToyMap
-INFO: Список успішно підібрано
-лист. 18, 2022 10:12:13 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:13 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TODDLER
-лист. 18, 2022 10:12:13 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:13 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою MIDDLECHILD
-лист. 18, 2022 10:12:13 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:13 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TEENAGER
-лист. 18, 2022 10:12:13 ПП PlayRoom.PlayRoom$ToyList getActualMoney
-INFO: Виведення фактичної ціни усіх іграшок
-лист. 18, 2022 10:12:14 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:14 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TODDLER
-лист. 18, 2022 10:12:14 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:14 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою MIDDLECHILD
-лист. 18, 2022 10:12:14 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:14 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TEENAGER
-лист. 18, 2022 10:12:14 ПП PlayRoom.PlayRoom$ToyList CreateToyMap
-INFO: Спроба підібрати список іграшок
-лист. 18, 2022 10:12:14 ПП PlayRoom.PlayRoom autoPrepRoom
-INFO: Автоматичний підбір вікових груп
-лист. 18, 2022 10:12:14 ПП PlayRoom.PlayRoom$ToyList CreateToyMap
-INFO: Список успішно підібрано
-лист. 18, 2022 10:12:14 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:14 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TODDLER
-лист. 18, 2022 10:12:14 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:14 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою MIDDLECHILD
-лист. 18, 2022 10:12:14 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:14 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TEENAGER
-лист. 18, 2022 10:12:14 ПП PlayRoom.PlayRoom$ToyList getActualMoney
-INFO: Виведення фактичної ціни усіх іграшок
-лист. 18, 2022 10:12:15 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:15 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TODDLER
-лист. 18, 2022 10:12:15 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:15 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою MIDDLECHILD
-лист. 18, 2022 10:12:15 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:15 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TEENAGER
-лист. 18, 2022 10:12:15 ПП PlayRoom.PlayRoom$ToyList CreateToyMap
-INFO: Спроба підібрати список іграшок
-лист. 18, 2022 10:12:15 ПП PlayRoom.PlayRoom autoPrepRoom
-INFO: Автоматичний підбір вікових груп
-лист. 18, 2022 10:12:15 ПП PlayRoom.PlayRoom$ToyList CreateToyMap
-INFO: Список успішно підібрано
-лист. 18, 2022 10:12:15 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:15 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TODDLER
-лист. 18, 2022 10:12:15 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:15 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою MIDDLECHILD
-лист. 18, 2022 10:12:15 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:15 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TEENAGER
-лист. 18, 2022 10:12:15 ПП PlayRoom.PlayRoom$ToyList getActualMoney
-INFO: Виведення фактичної ціни усіх іграшок
-лист. 18, 2022 10:12:16 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:16 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TODDLER
-лист. 18, 2022 10:12:16 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:16 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою MIDDLECHILD
-лист. 18, 2022 10:12:16 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:16 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TEENAGER
-лист. 18, 2022 10:12:16 ПП PlayRoom.PlayRoom$ToyList CreateToyMap
-INFO: Спроба підібрати список іграшок
-лист. 18, 2022 10:12:16 ПП PlayRoom.PlayRoom autoPrepRoom
-INFO: Автоматичний підбір вікових груп
-лист. 18, 2022 10:12:16 ПП PlayRoom.PlayRoom$ToyList CreateToyMap
-INFO: Список успішно підібрано
-лист. 18, 2022 10:12:16 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:16 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TODDLER
-лист. 18, 2022 10:12:16 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:16 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою MIDDLECHILD
-лист. 18, 2022 10:12:16 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:16 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TEENAGER
-лист. 18, 2022 10:12:16 ПП PlayRoom.PlayRoom$ToyList getActualMoney
-INFO: Виведення фактичної ціни усіх іграшок
-лист. 18, 2022 10:12:17 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:17 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TODDLER
-лист. 18, 2022 10:12:17 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:17 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою MIDDLECHILD
-лист. 18, 2022 10:12:17 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:17 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TEENAGER
-лист. 18, 2022 10:12:17 ПП PlayRoom.PlayRoom$ToyList CreateToyMap
-INFO: Спроба підібрати список іграшок
-лист. 18, 2022 10:12:17 ПП PlayRoom.PlayRoom autoPrepRoom
-INFO: Автоматичний підбір вікових груп
-лист. 18, 2022 10:12:17 ПП PlayRoom.PlayRoom$ToyList CreateToyMap
-INFO: Список успішно підібрано
-лист. 18, 2022 10:12:17 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:17 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TODDLER
-лист. 18, 2022 10:12:17 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:17 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою MIDDLECHILD
-лист. 18, 2022 10:12:17 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:17 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TEENAGER
-лист. 18, 2022 10:12:18 ПП PlayRoom.PlayRoom$ToyList getActualMoney
-INFO: Виведення фактичної ціни усіх іграшок
-лист. 18, 2022 10:12:26 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:26 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TODDLER
-лист. 18, 2022 10:12:26 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:26 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою MIDDLECHILD
-лист. 18, 2022 10:12:26 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:26 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TEENAGER
-лист. 18, 2022 10:12:26 ПП PlayRoom.PlayRoom$ToyList CreateToyMap
-INFO: Спроба підібрати список іграшок
-лист. 18, 2022 10:12:26 ПП PlayRoom.PlayRoom autoPrepRoom
-INFO: Автоматичний підбір вікових груп
-лист. 18, 2022 10:12:26 ПП PlayRoom.PlayRoom$ToyList CreateToyMap
-INFO: Список успішно підібрано
-лист. 18, 2022 10:12:26 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:26 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TODDLER
-лист. 18, 2022 10:12:26 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:26 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою MIDDLECHILD
-лист. 18, 2022 10:12:26 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:26 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TEENAGER
-лист. 18, 2022 10:12:26 ПП PlayRoom.PlayRoom$ToyList getActualMoney
-INFO: Виведення фактичної ціни усіх іграшок
-лист. 18, 2022 10:12:28 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:28 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TODDLER
-лист. 18, 2022 10:12:28 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:28 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою MIDDLECHILD
-лист. 18, 2022 10:12:28 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:28 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TEENAGER
-лист. 18, 2022 10:12:28 ПП PlayRoom.PlayRoom$ToyList CreateToyMap
-INFO: Спроба підібрати список іграшок
-лист. 18, 2022 10:12:28 ПП PlayRoom.PlayRoom autoPrepRoom
-INFO: Автоматичний підбір вікових груп
-лист. 18, 2022 10:12:28 ПП PlayRoom.PlayRoom$ToyList CreateToyMap
-INFO: Список успішно підібрано
-лист. 18, 2022 10:12:28 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:28 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TODDLER
-лист. 18, 2022 10:12:28 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:28 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою MIDDLECHILD
-лист. 18, 2022 10:12:28 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:28 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TEENAGER
-лист. 18, 2022 10:12:29 ПП PlayRoom.PlayRoom$ToyList getActualMoney
-INFO: Виведення фактичної ціни усіх іграшок
-лист. 18, 2022 10:12:48 ПП PlayRoom.PlayRoom startGroup
+лист. 20, 2022 12:48:35 ПП PlayRoom.PlayRoom startGroup
 CONFIG: Спроба відкриття кімнати
-лист. 18, 2022 10:12:48 ПП PlayRoom.PlayRoom startGroup
+лист. 20, 2022 12:48:35 ПП PlayRoom.PlayRoom startGroup
 FINE: Кімнату успішно відкрито, заповнюються місця для зареєстрованих дітей
-лист. 18, 2022 10:12:48 ПП PlayRoom.PlayRoom addChildren
+лист. 20, 2022 12:48:35 ПП PlayRoom.PlayRoom addChildren
 INFO: Додавання в БД зареєстрованих дітей
-лист. 18, 2022 10:12:48 ПП PlayRoom.AbstractToyList approveList
+лист. 20, 2022 12:48:35 ПП PlayRoom.AbstractToyList approveList
 CONFIG: Перевірка, чи можна підтвердити список іграшок
-лист. 18, 2022 10:12:48 ПП PlayRoom.AbstractToyList addToys
+лист. 20, 2022 12:48:35 ПП PlayRoom.AbstractToyList addToys
 INFO: Заповнення кімнати підібраним списком іграшок
-лист. 18, 2022 10:12:58 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:58 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TODDLER
-лист. 18, 2022 10:12:58 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:58 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою MIDDLECHILD
-лист. 18, 2022 10:12:58 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:12:58 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TEENAGER
-лист. 18, 2022 10:12:58 ПП PlayRoom.PlayRoom$ToyList getActualMoney
-INFO: Виведення фактичної ціни усіх іграшок
-лист. 18, 2022 10:13:15 ПП PlayRoom.AbstractToyList toysInRoom
-INFO: Виведення усіх іграшок з БД, які є у кімнаті
-лист. 18, 2022 10:13:15 ПП PlayRoom.PlayRoom$ToyList getActualMoney
-INFO: Виведення фактичної ціни усіх іграшок
-лист. 18, 2022 10:13:22 ПП PlayRoom.AbstractToyList sortToysByPrice
-INFO: Сортування іграшок, що у кімнаті, за ціною
-лист. 18, 2022 10:13:23 ПП PlayRoom.PlayRoom$ToyList getActualMoney
-INFO: Виведення фактичної ціни усіх іграшок
-лист. 18, 2022 10:13:24 ПП PlayRoom.AbstractToyList sortToysByAgeGroup
-INFO: Сортування іграшок, що у кімнаті, за віковою групою
-лист. 18, 2022 10:13:24 ПП PlayRoom.PlayRoom$ToyList getActualMoney
-INFO: Виведення фактичної ціни усіх іграшок
-лист. 18, 2022 10:13:25 ПП PlayRoom.AbstractToyList sortToysByAgeGroup
-INFO: Сортування іграшок, що у кімнаті, за віковою групою
-лист. 18, 2022 10:13:25 ПП PlayRoom.PlayRoom$ToyList getActualMoney
-INFO: Виведення фактичної ціни усіх іграшок
-лист. 18, 2022 10:13:28 ПП PlayRoom.AbstractToyList sortToysBySize
-INFO: Сортування іграшок, що у кімнаті, за розміром
-лист. 18, 2022 10:13:28 ПП PlayRoom.PlayRoom$ToyList getActualMoney
-INFO: Виведення фактичної ціни усіх іграшок
-лист. 18, 2022 10:13:29 ПП PlayRoom.AbstractToyList sortToysByAmount
-INFO: Сортування іграшок, що у кімнаті, за кількістю
-лист. 18, 2022 10:13:29 ПП PlayRoom.PlayRoom$ToyList getActualMoney
-INFO: Виведення фактичної ціни усіх іграшок
-лист. 18, 2022 10:13:33 ПП PlayRoom.AbstractToyList sortToysByPrice
-INFO: Сортування іграшок, що у кімнаті, за ціною
-лист. 18, 2022 10:13:33 ПП PlayRoom.PlayRoom$ToyList getActualMoney
-INFO: Виведення фактичної ціни усіх іграшок
-лист. 18, 2022 10:13:34 ПП PlayRoom.AbstractToyList sortToysByAgeGroup
-INFO: Сортування іграшок, що у кімнаті, за віковою групою
-лист. 18, 2022 10:13:34 ПП PlayRoom.PlayRoom$ToyList getActualMoney
-INFO: Виведення фактичної ціни усіх іграшок
-лист. 18, 2022 10:13:35 ПП PlayRoom.AbstractToyList sortToysByAmount
-INFO: Сортування іграшок, що у кімнаті, за кількістю
-лист. 18, 2022 10:13:35 ПП PlayRoom.PlayRoom$ToyList getActualMoney
-INFO: Виведення фактичної ціни усіх іграшок
-лист. 18, 2022 10:13:35 ПП PlayRoom.AbstractToyList sortToysBySize
-INFO: Сортування іграшок, що у кімнаті, за розміром
-лист. 18, 2022 10:13:35 ПП PlayRoom.PlayRoom$ToyList getActualMoney
-INFO: Виведення фактичної ціни усіх іграшок
-лист. 18, 2022 10:13:52 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:13:52 ПП PlayRoom.AbstractToyList addToy
-FINE: Додавання 123 в БД
-лист. 18, 2022 10:13:59 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:13:59 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TODDLER
-лист. 18, 2022 10:13:59 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:13:59 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою MIDDLECHILD
-лист. 18, 2022 10:13:59 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:13:59 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TEENAGER
-лист. 18, 2022 10:13:59 ПП PlayRoom.PlayRoom$ToyList getActualMoney
-INFO: Виведення фактичної ціни усіх іграшок
-лист. 18, 2022 10:14:15 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:14:15 ПП PlayRoom.AbstractToyList deleteToy
-FINE: Видалення іграшки з ID(32) з БД
-лист. 18, 2022 10:14:15 ПП PlayRoom.PlayRoom$ToyList getActualMoney
-INFO: Виведення фактичної ціни усіх іграшок
-лист. 18, 2022 10:14:18 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:14:18 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TODDLER
-лист. 18, 2022 10:14:18 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:14:18 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою MIDDLECHILD
-лист. 18, 2022 10:14:18 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:14:18 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TEENAGER
-лист. 18, 2022 10:14:18 ПП PlayRoom.PlayRoom$ToyList getActualMoney
-INFO: Виведення фактичної ціни усіх іграшок
-лист. 18, 2022 10:14:33 ПП PlayRoom.PlayRoom ChildrenList
-INFO: Виведення списку зареєстрованих дітей
-лист. 18, 2022 10:14:43 ПП PlayRoom.PlayRoom ChildrenList
-INFO: Виведення списку зареєстрованих дітей
-лист. 18, 2022 10:14:48 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:14:48 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TODDLER
-лист. 18, 2022 10:14:48 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:14:48 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою MIDDLECHILD
-лист. 18, 2022 10:14:48 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:14:48 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TEENAGER
-лист. 18, 2022 10:14:48 ПП PlayRoom.PlayRoom$ToyList CreateToyMap
-INFO: Спроба підібрати список іграшок
-лист. 18, 2022 10:14:49 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:14:49 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TODDLER
-лист. 18, 2022 10:14:49 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:14:49 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою MIDDLECHILD
-лист. 18, 2022 10:14:49 ПП DAO.AdmDAO getToyList
-INFO: AdmDAO повертає об'єкт ToyList
-лист. 18, 2022 10:14:49 ПП PlayRoom.AbstractToyList allToysByAgeGroup
-INFO: Пошук усіх іграшок у БД з віковою групою TEENAGER
-лист. 18, 2022 10:14:49 ПП PlayRoom.PlayRoom$ToyList CreateToyMap
-INFO: Спроба підібрати список іграшок
-лист. 18, 2022 10:15:05 ПП PlayRoom.PlayRoom$ToyList getActualMoney
-INFO: Виведення фактичної ціни усіх іграшок
-лист. 18, 2022 10:15:12 ПП PlayRoom.PlayRoom ChildrenList
-INFO: Виведення списку зареєстрованих дітей
-лист. 18, 2022 10:15:15 ПП PlayRoom.PlayRoom freeRoom
+лист. 20, 2022 12:48:43 ПП PlayRoom.PlayRoom freeRoom
 CONFIG: Звільнення кімнати
-лист. 18, 2022 10:15:15 ПП PlayRoom.AbstractToyList trunkToyList
+лист. 20, 2022 12:48:43 ПП PlayRoom.AbstractToyList trunkToyList
 FINE: Видалення даних з таблиці з іграшками, які знаходились в кімнаті
